@@ -11,7 +11,7 @@ describe('Test that compares prices', function () {
         await driver.get('https://www.bmwusa.com/');
         await driver.findElement(By.css('a[href="/build-your-own.html#/series/X3/sports-activity-vehicle"]')).click();
         await driver.wait(until.titleIs('Build Your Own – Engine and Drivetrain Options – BMW USA'), 10000);
-        let price = await driver.findElement(By.xpath('//div[2]/div[2]/div[3]/div/div[2]')).getText();
+        let price = await driver.findElement(By.xpath('(//a[@title="2023 BMW X3 xDrive30i"]/preceding-sibling::*)[2]')).getText();
         let numberedPrice = Number(price.replace(/[^0-9.-]+/g,""));
         assert.equal(47400, numberedPrice);
         await driver.quit()
